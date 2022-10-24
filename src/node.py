@@ -31,7 +31,9 @@ class Node:
         self.division_column = temp[1]
         self.division_column_point = temp[2]
         time.sleep(1)
+        #if self.node_entropy != 0.0:
         if temp[0] != 0.0:
+            print(self.node_entropy)
             data = self.df[(self.df.iloc[:, self.division_column] <= self.division_column_point)]
             self.children_left = Node(data.drop(columns=['label']), data['label'])
             data = self.df[~(self.df.iloc[:, self.division_column] <= self.division_column_point)]
