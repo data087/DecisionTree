@@ -3,13 +3,12 @@ import numpy as np
 import time
 
 class Node:
-    def __init__(self, data, label):
+    def __init__(self, data, label, depth):
         # UI 관련
         self.node_entropy = None
         self.division_column = None
         self.division_column_point = None
-
-        self.depth = None
+        self.depth = depth + 1
 
         # self.parent_node = None
         self.children_left = None
@@ -30,14 +29,11 @@ class Node:
         print(temp)
         self.division_column = temp[1]
         self.division_column_point = temp[2]
-        time.sleep(1)
-        #if self.node_entropy != 0.0:
         if temp[0] != 0.0:
-            print(self.node_entropy)
             data = self.df[(self.df.iloc[:, self.division_column] <= self.division_column_point)]
-            self.children_left = Node(data.drop(columns=['label']), data['label'])
+            self.children_left = Node(data.drop(columns=['label']), data['label'], self.depth)
             data = self.df[~(self.df.iloc[:, self.division_column] <= self.division_column_point)]
-            self.children_right = Node(data.drop(columns=['label']), data['label'])
+            self.children_right = Node(data.drop(columns=['label']), data['label'], self.depth)
 
 
     def find_best_IG(self):

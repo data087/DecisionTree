@@ -13,26 +13,21 @@ import pandas as pd
 import numpy as np
 import src.node
 
+
 class DecisionTree:
     def __init__(self, data, label):
-        # 데이터 관련
-        #self.df = pd.DataFrame(data=data)
-        #self.df['label'] = label
-        #self.label_unique = np.unique(self.df['label'])
-
         # 실제 동작
-        self.root = src.node.Node(data, label)
-        self.get_node()
+        root = src.node.Node(data, label, 0)
+        self.get_node(root)
 
-    def get_node(self):
-        temp = self.create_pretty_str(self.root)
-        print(temp)
-
-        #print(self.root.node_entropy)
-        #print(self.root.division_column)
-        #print(self.root.division_point)
+    def get_node(self, node):
+        print(self.create_pretty_str(node))
+        if node.children_left is not None:
+            self.get_node(node.children_left)
+        if node.children_right is not None:
+            self.get_node(node.children_right)
 
     def create_pretty_str(self, node):
-        temp = F"Entrpy : {node.node_entropy}, column = {node.division_column} \
+        temp = F"{node.depth * '-'}Entrpy : {node.node_entropy}, column = {node.division_column} \
         division_point = {node.division_column_point}"
         return temp
