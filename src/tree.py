@@ -27,6 +27,7 @@ class DecisionTree:
     def check(self):
         temp = self.entropy_best()
         print(temp)
+        # Test
 
     def entropy_best(self):
         # 수치형 데이터만 가능하게 구현
