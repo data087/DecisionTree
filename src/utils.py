@@ -8,7 +8,7 @@ import numpy as np
 
 
 def load_data(file_name):
-    file_path = "C:/Users/dbs08/PycharmProjects/DecisionTreeTest/data/"
+    file_path = "C:/Users/dbs08/PycharmProjects/DecisionTree/data/"
     file = pd.read_csv(file_path + file_name, header=None)
     count_rows = len(file)
     count_columns = len(file.columns)
