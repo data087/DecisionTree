@@ -35,7 +35,6 @@ class Node:
             data = self.df[~(self.df.iloc[:, self.division_column] <= self.division_column_point)]
             self.children_right = Node(data.drop(columns=['label']), data['label'], self.depth)
 
-
     def find_best_IG(self):
         # 수치형 데이터만 가능하게 구현
         list_expectation = []
