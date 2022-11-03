@@ -4,7 +4,7 @@ import src.tree
 
 def main():
     data_x, data_y = src.utils.load_data("iris.data")
-    src.tree.DecisionTree(data=data_x, label=data_y)
+    tree = src.tree.DecisionTree(data=data_x, label=data_y)
 
 
 if __name__ == "__main__":
